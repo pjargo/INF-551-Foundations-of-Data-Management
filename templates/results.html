@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+
+  <style>
+      body {font-family: "Arial", helvetica, sans-serif;}
+      div.dbbox{margin-top: 70pk; margin-bottom: 10px; font-weight: bold}
+      div.reqsize {font-size: 90%; margin-top: 50px; text-align: :center}
+      .Table{display:table; width:90%; font-size: 85%}
+
+      table, th, td {
+        border: 1px solid black;
+      }
+  </style>
+
+</head>
+
+<body>
+  <h1 style="font-family:verdana;">Search Results</h1>
+
+
+
+   {% if result is not None %}
+    {% for res in result %}
+      <table style="width:25%">
+        {% for key, value in res.items %}
+         <tr>
+            <th> {{key}}</th>
+            {% if key in keys %}
+              <td> <a href="/post_results/?z={{value}}&y={{key}}&x={{Database}}" >{{value}}</a> </td>
+            {% else  %}
+              <td> {{ value }} </td>
+            {% endif %}
+         </tr>
+        {% endfor %}
+      </table><br>
+    {% endfor %}
+   {% endif %}
+
+  {% if result == None %}
+    <p>there are no results for {{ keyword }}</p>
+  {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<style>
+        div{
+        position : absolute;
+        right : 10px;
+        top : 5px
+        }
+    </style>
+</head>
+<body>
+<div>
+<button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+</div>
+Welcome back
+<br><br>
+   {% if result is not None %}
+    {% for res in result %}
+      <table style="width:25%">
+        {% for key, value in res.items %}
+         <tr>
+            <th> {{key}}</th>
+            {% if key in keys %}
+              <td> <a href="/post_results/?z={{value}}&y={{key}}&x={{Database}}" >{{value}}</a> </td>
+            {% else  %}
+              <td> {{ value }} </td>
+            {% endif %}
+         </tr>
+        {% endfor %}
+      </table><br>
+    {% endfor %}
+   {% endif %}
+</body>
+</html>

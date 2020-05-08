@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+h2{
+    text-align: center
+}
+.logout{
+        position : absolute;
+        right : 10px;
+        top : 5px
+        }
+
+p{
+    text-align: center
+}
+form.find input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.find button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.find button:hover {
+  background: #0b7dda;
+}
+
+form.find::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.dropbtn{
+            background-color:black;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius:5px;
+            height:50px;
+            padding:100;
+}
+</style>
+</head>
+<body>
+
+    {% csrf_token %}
+    Welcome {{e}}
+<h2>INF551 Project</h2>
+
+<div class="logout">
+
+<button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+</div>
+<p>What would you like to search?</p>
+
+<form class="find" method="get" action="/getdata/" style="margin:auto;max-width:300px">
+        <div class="dropdown">
+            <select name = "Database" class="dropbtn">
+                <div class="dropdown-content" ><br>
+                    <option value = "world" href="#">world</option>
+                    <option value = "employees" href="#">employees</option>
+                    <option value = "sakila" href="#">sakila</option>
+                </div>
+            </select>
+            </div><br>
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+
+</body>
+</html> 
